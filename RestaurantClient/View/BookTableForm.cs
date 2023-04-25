@@ -27,7 +27,7 @@ public partial class BookTableForm : UserControl
         var hour = (int)comboBoxHour.SelectedValue;
 
         var result = await _controller.AddBooking(date, nrOfPersons, hour);
-        MessageBox.Show(result ? "Rezervarea a fost facuta cu succes!" : "Eroare!");
+        MessageBox.Show(result ?  "Eroare!" : "Rezervarea a fost facuta cu succes!");
     }
 
     private void dateTimePicker_ValueChanged(object sender, EventArgs e)

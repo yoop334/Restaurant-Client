@@ -20,14 +20,14 @@ public partial class BookTableForm : UserControl
         // InitNrOfPersons();
     }
 
-    private void buttonBookTable_Click(object sender, EventArgs e)
+    private async void buttonBookTable_Click(object sender, EventArgs e)
     {
         var date = new DateTimeOffset(dateTimePicker.Value).ToUniversalTime().ToUnixTimeMilliseconds();
         var nrOfPersons = (int)comboBoxPersons.SelectedValue;
         var hour = (int)comboBoxHour.SelectedValue;
 
-        var result = _controller.AddBooking(date, nrOfPersons, hour);
-        MessageBox.Show(result.Result ? "Rezervarea a fost facuta cu succes!" : "Eroare!");
+        var result = await _controller.AddBooking(date, nrOfPersons, hour);
+        MessageBox.Show(result ? "Rezervarea a fost facuta cu succes!" : "Eroare!");
     }
 
     private void dateTimePicker_ValueChanged(object sender, EventArgs e)
